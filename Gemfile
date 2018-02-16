@@ -18,7 +18,9 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
+gem 'puma'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'
