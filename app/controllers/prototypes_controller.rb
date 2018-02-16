@@ -10,6 +10,20 @@ class PrototypesController < ApplicationController
     @prototype.captured_images.build
   end
 
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def destroy
+    prototype = Prototype.find(params[:id])
+      prototype.destroy
+  end
+
+  def update
+    @prototype.update(prototype_params)
+    redirect_to :root, notice: 'Your prototype was successfully updated'
+  end
+
   def create
     @prototype = Prototype.new(prototype_params)
     if @prototype.save
