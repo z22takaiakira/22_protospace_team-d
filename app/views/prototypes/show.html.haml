@@ -42,3 +42,10 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+  .row.proto-commnet
+    %h1 Write a comment!
+      = form_for @comment do |f|
+
+      = f.text_field :comment
+
+      = f.submit "Send"
