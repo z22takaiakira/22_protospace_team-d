@@ -26,13 +26,6 @@
         - @prototype.captured_images.sub.each do |image|
           %li.list-group-item
             = image_tag(image.content, class: 'img-responsive')
-  .row.proto-description
-    .col-md-3
-      %h4 Catch Copy
-      %p
-        = @prototype.catch_copy
-    .col-md-6
-      %h4 Concept
       %p
         = @prototype.concept
     .col-md-3
@@ -42,10 +35,12 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
-  .row.proto-commnet
-    %h1 Write a comment!
+  .comment
+    %h1 Write your name!
       = form_for @comment do |f|
 
-      = f.text_field :comment
+        = f.label :name, "名前"
+        = f.text_field :name
 
-      = f.submit "Send"
+        = f.submit "Send"
+

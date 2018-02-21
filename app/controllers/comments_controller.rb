@@ -1,15 +1,17 @@
 class CommentsController < ApplicationController
  def create
-  Comment.create(comment: params[:comment], prototype_id: params[:prototype_id], user_id: current_user.id)
+  Comment.create(comment_params)
  end
 
-
-
-
-
-
-
-end
-
+private
+def set_comment
+    @comment = Comment.find(params[:id])
+  end
+  def comment_params
+    params.require(:prototype).permit(
+      :comment,
+      :prototype_id,
+      :user_id,)
+  end
 
 
