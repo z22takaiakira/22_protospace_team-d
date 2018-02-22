@@ -3,6 +3,9 @@ class CommentsController < ApplicationController
   Comment.create(comment_params)
  end
 
+ def update
+  @comment.update(comment_params)
+
 private
 def set_comment
     @comment = Comment.find(params[:id])
