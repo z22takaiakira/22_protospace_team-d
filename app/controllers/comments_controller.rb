@@ -11,8 +11,8 @@ def set_comment
     @comment = Comment.find(params[:id])
   end
   def comment_params
-    params.require(:prototype).permit(
-      :comment,
+    params.require(:comment).permit(
+      :body,
       :prototype_id,
       :user_id,)
   end

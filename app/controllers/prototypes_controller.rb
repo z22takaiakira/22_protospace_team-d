@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :edit,:update]
 
   def index
     @prototypes = Prototype.all
@@ -11,7 +11,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
+
   end
 
   def destroy
@@ -34,12 +34,14 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @comments =@prototype.comments
   end
 
   private
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
+
   end
 
   def prototype_params
