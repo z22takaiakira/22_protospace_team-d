@@ -38,7 +38,7 @@
   .comment
     %p Write your comment
     .col-lg-form
-      = form_for [@comment, @prototype] do |f|
+      = form_for [@prototype,@comment] do |f|
         =f.label :name, "名前"
         =f.text_area :body
         =f.submit "Send"

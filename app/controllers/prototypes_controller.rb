@@ -35,6 +35,7 @@ class PrototypesController < ApplicationController
 
   def show
     @comments =@prototype.comments
+    @comment =Comment.new
   end
 
   private
