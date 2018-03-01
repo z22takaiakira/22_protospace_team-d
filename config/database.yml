@@ -54,3 +54,4 @@ production:
   password: <%= ENV['PROTOSPACE-IN-DEV_DATABASE_PASSWORD'] %>
   url:  <%= ENV["DATABASE_URL"] %>
   pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+  socket: /tmp/mysql.sock
