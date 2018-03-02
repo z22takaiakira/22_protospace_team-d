@@ -51,7 +51,7 @@ production:
   <<: *default
   database: protospace-in-dev_production
   username: root
-  password: <%= ENV['PROTOSPACE-IN-DEV_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   url:  <%= ENV["DATABASE_URL"] %>
   pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
   socket: /var/lib/mysql/mysql.sock
