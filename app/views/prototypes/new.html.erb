@@ -1,0 +1,97 @@
+<div class="container proto-new">
+  <%= form_for @prototype do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="col-md-8 col-md-offset-2">
+      <header class="row user-nav row">
+        <div class="col-md-12">
+          <h4>Title</h4>
+          <div class="proto-new-title">
+            <%= f.text_field :title, required: true, autofocus: true, placeholder: "Input Title" %>
+          </div>
+        </div>
+      </header>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Main Thumbnail</h4>
+          <div class="cover-image-upload" id="main_image_uploader">
+            <form>
+                <input type="file" id="file" />
+            </form>
+            <div id="result"></div>
+
+            <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+            <script>
+            $(function(){
+                $('#file').change(function(){
+                    $('img').remove();
+                    var file = $(this).prop('files')[0];
+                    if(!file.type.match('image.*')){
+                        return;
+                    }
+                    var fileReader = new FileReader();
+                    fileReader.onloadend = function() {
+                        $('#result').html('<img src="' + fileReader.result + '"/>');
+                    }
+                    fileReader.readAsDataURL(file);
+                });
+            });
+            </script>
+            <!-- <%= f.fields_for :captured_images do |image| %>
+              <img id="main_preview"/>
+              <%= image.file_field :content, required: true %>
+              <%= image.hidden_field :status, value: "main" %>
+            <% end %> -->
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h4>Sub Thumbnails</h4>
+          <ul class="proto-sub-list list-group">
+            <% 3.times do |i| %>
+              <li class="list-group-item col-md-4">
+                <div class="image-upload">
+                  <%= f.fields_for :captured_images do |image| %>
+
+                    <%= image.file_field :content %>
+                    <img class="sub-preview"/>
+                    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+                    <script>
+                    $(function(){
+                        $('#file').change(function(){
+                            $('img').remove();
+                            var file = $(this).prop('files')[0];
+                            if(!file.type.match('image.*')){
+                                return;
+                            }
+                            var fileReader = new FileReader();
+                            fileReader.onloadend = function() {
+                                $('sub-preview').html('<img src="' + fileReader.result + '"/>');
+                            }
+                            fileReader.readAsDataURL(file);
+                        });
+                    });
+                    </script>
+                    <%= image.hidden_field :status, value: "sub" %>
+
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="row proto-description">
+        <div class="col-md-12">
+          <h4>Catch Copy</h4>
+          <%= f.text_field :catch_copy, require: true, placeholder: "Input Catch Copy" %>
+        </div>
+        <div class="col-md-12">
+          <h4>Concept</h4>
+          <%= f.text_area :concept, require: true, placeholder: "Input Concept" %>
+        </div>
+      </div>
+      <div class="row text-center proto-btn">
+        <%= f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block" %>
+      </div>
+    </div>
+  <% end %>
+</div>

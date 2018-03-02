@@ -19,7 +19,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rails_12factor', group: :production
-gem 'puma'
+# gem 'puma'
 gem 'kaminari'
 
 group :development, :test do
@@ -29,4 +29,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :production do
+  gem 'unicorn'
 end
