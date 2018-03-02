@@ -19,7 +19,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rails_12factor', group: :production
-gem 'puma'
+# gem 'puma'
 gem 'kaminari'
 
 group :development, :test do
@@ -32,5 +32,8 @@ group :development do
 
 end
 
-gem 'better_errors'
-gem 'binding_of_caller'
+
+group :production do
+  gem 'unicorn'
+end
+

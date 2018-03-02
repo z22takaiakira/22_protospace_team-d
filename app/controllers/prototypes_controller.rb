@@ -1,8 +1,10 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit,:update]
+
+  before_action :set_prototype, only: [:show, :edit, :destroy, :update]
+
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.all.order(params[:page])
   end
 
   def new
@@ -15,8 +17,7 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    prototype = Prototype.find(params[:id])
-      prototype.destroy
+    @prototype.destroy
   end
 
   def update
@@ -29,7 +30,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      redirect_to ({ action: new }), alert: 'New prototype was unsuccessfully created'
      end
   end
 
