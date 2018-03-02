@@ -34,7 +34,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @comments =@prototype.comments
+    @comments =@prototype.comments.includes(:user)
     @comment =Comment.new
   end
 

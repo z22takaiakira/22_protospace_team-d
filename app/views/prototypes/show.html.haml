@@ -37,15 +37,17 @@
           %a{href: "#", class: "btn btn-default"} wireframe
   .comment
     %p Write your comment
-    .col-lg-form
+    .comment__form
       = form_for [@prototype,@comment] do |f|
-        =f.label :name, "名前"
+        =f.label :name, "name"
         =f.text_area :body
+        = f.hidden_field :prototype_id, :value => @prototype.id
+        = f.hidden_field :user_id, :value => current_user.id
         =f.submit "Send"
     %p comments
-    .col-lg-check-comment
-      -@prototype.comments.each do |comment|
-        =comment
+    .comment__show
+      -@comments.each do |comment|
+        =comment.body
 
 
 
